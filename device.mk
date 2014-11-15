@@ -110,6 +110,10 @@ PRODUCT_AAPT_PREF_CONFIG := 560dpi
 # A list of dpis to select prebuilt apk, in precedence order.
 PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
 
+# Bluetooth config files
+PRODUCT_COPY_FILES += \
+    device/moto/shamu/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
+
 PRODUCT_CHARACTERISTICS := nosdcard
 
 DEVICE_PACKAGE_OVERLAYS := \
