@@ -20,6 +20,8 @@
 #
 # Everything in this directory will become public
 
+PRODUCT_COPY_FILES += \
+    device/moto/shamu/twrp.fstab:recovery/root/etc/twrp.fstab
 
 PRODUCT_COPY_FILES += \
     device/moto/shamu/init.shamu.rc:root/init.shamu.rc \
