@@ -1,7 +1,7 @@
 [
   {
 	"remote": "cm",
-	"repository": "android_kernel_moto_shamu",
+	"repository": "CyanogenMod/android_kernel_moto_shamu",
 	"target_path": "kernel/moto/shamu",
 	"revision": "cm-12.1"
   },
