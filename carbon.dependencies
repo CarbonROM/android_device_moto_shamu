@@ -1,0 +1,14 @@
+[
+  {
+    "remote": "aosp",
+    "repository": "kernel/msm",
+    "target_path": "kernel/moto/msm",
+    "revision": "refs/tags/android-6.0.1_r3"
+  },
+  {
+    "remote": "gh",
+    "repository": "MallowDev/vendor_moto",
+    "target_path": "vendor/moto",
+    "revision": "mm"
+  },
+]
