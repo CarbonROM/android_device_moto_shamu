@@ -13,6 +13,7 @@
 # limitations under the License.
 
 # Kernel
+TARGET_KERNEL_CONFIG := shamu_defconfig
 TARGET_KERNEL_SOURCE := kernel/moto/msm
 
 # Inherit AOSP Shinano common device parts

@@ -3,7 +3,7 @@
     "remote": "aosp",
     "repository": "kernel/msm",
     "target_path": "kernel/moto/msm",
-    "revision": "refs/tags/android-6.0.1_r3"
+    "revision": "android-msm-shamu-3.10-marshmallow-mr1"
   },
   {
     "remote": "gh",
