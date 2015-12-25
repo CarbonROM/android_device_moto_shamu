@@ -13,8 +13,9 @@
 # limitations under the License.
 
 # Kernel
-TARGET_KERNEL_CONFIG := shamu_defconfig
+BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 TARGET_KERNEL_SOURCE := kernel/moto/msm
+TARGET_KERNEL_CONFIG := shamu_defconfig
 
 # Inherit AOSP Shinano common device parts
 $(call inherit-product, device/moto/shamu/aosp_shamu.mk)
@@ -29,6 +30,7 @@ $(call inherit-product, vendor/carbon/config/common.mk)
 PRODUCT_NAME := carbon_shamu
 PRODUCT_BRAND := google
 PRODUCT_MODEL := Nexus 6
+PRODUCT_RESTRICT_VENDOR_FILES := false
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=shamu \
