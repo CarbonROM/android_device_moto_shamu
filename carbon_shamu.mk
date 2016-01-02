@@ -17,6 +17,10 @@ BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 TARGET_KERNEL_SOURCE := kernel/moto/msm
 TARGET_KERNEL_CONFIG := shamu_defconfig
 
+# Screen Resolution for the Bootanimation
+TARGET_SCREEN_HEIGHT := 2560
+TARGET_SCREEN_WIDTH := 1440
+
 # Inherit AOSP Shinano common device parts
 $(call inherit-product, device/moto/shamu/aosp_shamu.mk)
 
