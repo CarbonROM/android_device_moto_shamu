@@ -15,11 +15,6 @@
  * limitations under the License.
  */
 
-
-// #define LOG_NDEBUG 0
-
-#include <cutils/log.h>
-
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
@@ -27,6 +22,9 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <pthread.h>
+
+#define LOG_TAG "shamu-lights"
+#include <utils/Log.h>
 
 #include <sys/ioctl.h>
 #include <sys/types.h>
@@ -50,8 +48,19 @@ char const*const GREEN_LED_FILE
 char const*const BLUE_LED_FILE
         = "/sys/class/leds/blue/brightness";
 
+char const*const RED_BLINK_LED_FILE
+        = "/sys/class/leds/red/blink";
+
+char const*const GREEN_BLINK_LED_FILE
+        = "/sys/class/leds/green/blink";
+
+char const*const BLUE_BLINK_LED_FILE
+        = "/sys/class/leds/blue/blink";
+
 char const*const LCD_FILE
         = "/sys/class/leds/lcd-backlight/brightness";
+
+typedef struct { int red; int green; int blue;} LedIdentifier;
 
 /**
  * device methods
@@ -82,6 +91,52 @@ write_int(char const* path, int value)
     } else {
         if (already_warned == 0) {
             ALOGE("write_int failed to open %s\n", path);
+            already_warned = 1;
+        }
+        return -errno;
+    }
+}
+
+static int
+write_rgb_str(LedIdentifier rgb_leds, char *value)
+{
+    int fdr;
+    int fdg;
+    int fdb;
+    static int already_warned = 0;
+
+    fdr = open(RED_BLINK_LED_FILE, O_RDWR);
+    fdg = open(GREEN_BLINK_LED_FILE, O_RDWR);
+    fdb = open(BLUE_BLINK_LED_FILE, O_RDWR);
+    if (fdr >= 0 && fdg >= 0 && fdb >= 0) {
+        char buffer[PAGE_SIZE];
+        int bytes = sprintf(buffer, "%s\n", value);
+        int nullbytes = sprintf(buffer, "0,0\n");
+        int amtr;
+        int amtg;
+        int amtb;
+        if (rgb_leds.red > 5) {
+            amtr = write(fdr, buffer, bytes);
+        } else {
+            amtr = write(fdr, buffer, nullbytes);
+        }
+        if (rgb_leds.green > 5) {
+            amtg = write(fdg, buffer, bytes);
+        } else {
+            amtg = write(fdg, buffer, nullbytes);
+        }
+        if (rgb_leds.blue > 5) {
+            amtb = write(fdb, buffer, bytes);
+        } else {
+            amtb = write(fdb, buffer, nullbytes);
+        }
+        close(fdr);
+        close(fdg);
+        close(fdb);
+        return (amtr == -1 || amtg == -1 || amtg == -1) ? -errno : 0;
+    } else {
+        if (already_warned == 0) {
+            ALOGE("write_str failed to open LED Paths");
             already_warned = 1;
         }
         return -errno;
@@ -130,23 +185,36 @@ set_speaker_light_locked(struct light_device_t* dev,
         struct light_state_t const* state)
 {
     unsigned int colorRGB = state->color;
-    int red = 0;
-    int green = 0;
-    int blue = 0;
+    LedIdentifier rgb_leds;
+    unsigned long onMS, offMS;
+    char blink_string[PAGE_SIZE];
 
-    red = (((colorRGB >> 16) & 0xFF) / 12.75);
-    green = (((colorRGB >> 8) & 0xFF) / 12.75);
-    blue = ((colorRGB & 0xFF) / 12.75);
+    rgb_leds.red = (((colorRGB >> 16) & 0xFF) / 12.75);
+    rgb_leds.green = (((colorRGB >> 8) & 0xFF) / 12.75);
+    rgb_leds.blue = ((colorRGB & 0xFF) / 12.75);
 
-    write_int(RED_LED_FILE, red);
-    write_int(GREEN_LED_FILE, green);
-    write_int(BLUE_LED_FILE, blue);
+    write_int(RED_LED_FILE, rgb_leds.red);
+    write_int(GREEN_LED_FILE, rgb_leds.green);
+    write_int(BLUE_LED_FILE, rgb_leds.blue);
 
-#if 0
-    ALOGD("set_speaker_light_locked colorRGB=%08X, red=%d, green=%d, blue=%d\n",
-            colorRGB, red, green, blue);
-#endif
+    switch (state->flashMode) {
+        case LIGHT_FLASH_TIMED:
+            onMS = state->flashOnMS;
+            offMS = state->flashOffMS;
+            break;
+        case LIGHT_FLASH_NONE:
+        default:
+            onMS = 0;
+            offMS = 0;
+            break;
+    }
 
+    if (!(onMS == 1 && offMS == 0)) {
+        // We can only blink at full brightness when someone doesn't want a blinking LED
+        // don't write the blink code, so all colors can be used.
+        sprintf(blink_string, "%lu,%lu", onMS, offMS);
+        write_rgb_str(rgb_leds, blink_string);
+    }
     return 0;
 }
 
