@@ -3,6 +3,6 @@
     "remote": "aosp",
     "repository": "kernel/msm",
     "target_path": "kernel/moto/msm",
-    "revision": "android-msm-shamu-3.10-nougat"
+    "revision": "android-msm-shamu-3.10-nougat-mr0.5"
   }
 ]
