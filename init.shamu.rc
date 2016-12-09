@@ -131,6 +131,9 @@ on boot
     chown bluetooth net_bt_stack /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
+    # Wifi firmware reload path
+    chown wifi wifi /sys/module/bcmdhd/parameters/firmware_path
+
     # update foreground cpuset now that processors are up
     # reserve CPU 3 for the top app
     write /dev/cpuset/foreground/cpus 0-2
