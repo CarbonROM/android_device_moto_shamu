@@ -1,0 +1,8 @@
+[
+  {
+    "remote": "gh",
+    "repository": "LineageOS/android_kernel_moto_shamu",
+    "target_path": "kernel/moto/shamu",
+    "revision": "cm-14.1"
+  }
+]
