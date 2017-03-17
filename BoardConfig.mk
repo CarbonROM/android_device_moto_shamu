@@ -43,7 +43,6 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $
 # Increase the size if shaders of size greater than 12KB are used.
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 TARGET_USES_HWC2 := true
-TARGET_USES_HWC2ON1ADAPTER := true
 
 # Maximum GLES shader cache size for each app to store the compiled shader
 # binaries. Decrease the size if RAM or Flash Storage size is a limitation
