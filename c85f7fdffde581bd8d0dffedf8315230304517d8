@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 9A9F0FBA 1495899806 +0200\npushee ssh://review.carbonrom.org:29418/CarbonROM/android_device_moto_shamu\nnonce 1495899807-F2F1A4E0EA72641D8FD37EDBAEB34792E253793F\n\n0000000000000000000000000000000000000000 c85f7fdffde581bd8d0dffedf8315230304517d8 refs/for/cr-5.1\n-----BEGIN PGP SIGNATURE-----\nVersion: GnuPG v1\n\niQEcBAABAgAGBQJZKZ6eAAoJEHkGJiGanw+6xc8H/2GIohTVyEelbPpr+l5+WGEG\ncQqrVfDsyWZ9sRTXWfFuQzd30FqvBRreL6l8J46UlJjzJ3MJkdFxOQvj4+iMo2d/\nfGqKhgA9C202KBpR+H4ow9fxB/ePC05JsJFY8WQr874vMKgn2hkkDAHQwtyHXs39\nOBArJTxtTFwsG0PoE3z2MavC61yMXwsWyXQxKAshMkr/e9vxKDn1WatCwQDSgwub\ntHt6cf1O367lWrUhUwvRaHpxLo79lXinA3eQMSjv4c6S7bT+x225Tql+9p8c6IZZ\niIFaTzV1fVwb4AvT7QWQqfb2v7Hy7sifYaUGt9LCq9F5ol02WNkwKH+UbyJSidk\u003d\n\u003dbkqN\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
