@@ -107,6 +107,9 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 
+# Compile libhwui in performance mode
+HWUI_COMPILE_FOR_PERF := true
+
 TARGET_RECOVERY_FSTAB = device/moto/shamu/fstab.shamu
 # Ensure f2fstools are built
 TARGET_USERIMAGES_USE_F2FS := true
