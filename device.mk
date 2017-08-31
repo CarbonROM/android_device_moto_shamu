@@ -469,6 +469,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
    ro.frp.pst=/dev/block/platform/msm_sdcc.1/by-name/frp
 
+# Disable sdcardfs
+PRODUCT_PROPERTY_OVERRIDES += \
+ro.sys.sdcardfs=false
+
 # Delegation for OEM customization
 PRODUCT_OEM_PROPERTIES := \
     ro.config.ringtone \
