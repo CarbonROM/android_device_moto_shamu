@@ -219,6 +219,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Bluetooth
 PRODUCT_PACKAGES += \
     libbt-vendor \
+    android.hardware.bluetooth@1.0-service \
     android.hardware.bluetooth@1.0-impl
 
 # Camera
@@ -378,6 +379,7 @@ PRODUCT_PACKAGES += \
     nfc_nci.bcm2079x.default \
     NfcNci \
     Tag \
+    android.hardware.nfc@1.0-service \
     android.hardware.nfc@1.0-impl
 
 PRODUCT_COPY_FILES += \
