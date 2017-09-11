@@ -94,9 +94,12 @@
 /system/lib/hw/sound_trigger.primary.shamu.so
 /system/lib/libadspd-jni.so
 /system/lib/libadspd.so
+/system/lib/libaptX_encoder.so|984739a0bc968e18f75ced205733fe3f51c2d4f0
+/system/lib/libaptXHD_encoder.so|974c486e4ca03faa0713553d9dfe2995ac93e01c
 /system/lib/libaudioroute.so
 /system/lib/libdetectmodem.so
 /system/lib/libgps.utils.so
+/system/lib/libldacBT_enc.so|6b9ad026c3e4dcd5cba654bd7b3848a0446f4e8c
 /system/lib/libloc_core.so
 /system/lib/libloc_eng.so
 /system/lib/libmdmdetect.so
