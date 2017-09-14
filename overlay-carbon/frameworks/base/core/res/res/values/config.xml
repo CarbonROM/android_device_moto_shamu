@@ -94,4 +94,7 @@
     <string-array name="config_disabledUntilUsedPreinstalledCarrierApps">
         <item>com.google.android.apps.tycho</item>
     </string-array>
+
+    <!-- Wheter to enable doze always on -->
+    <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
 </resources>
