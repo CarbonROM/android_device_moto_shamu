@@ -145,4 +145,7 @@ BOARD_HARDWARE_CLASS := \
 # Recovery
 LZMA_RAMDISK_TARGETS := recovery
 
+# Binder API version
+TARGET_USES_64_BIT_BINDER := true
+
 -include vendor/motorola/shamu/BoardConfigVendor.mk
