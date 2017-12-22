@@ -191,10 +191,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     lights.shamu
 
-# for launcher layout
-#PRODUCT_PACKAGES += \
-#    ShamuLayout
-
 PRODUCT_PACKAGES += \
     bdAddrLoader
 
@@ -417,6 +413,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Low latency audio buffer size in frames
 PRODUCT_PROPERTY_OVERRIDES += \
     audio_hal.period_size=192
+
+# low audio flinger standby delay to reduce power consumption
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.audio.flinger_standbytime_ms=300
 
 # Set correct voice call audio property values
 PRODUCT_PROPERTY_OVERRIDES += \
