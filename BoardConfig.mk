@@ -136,4 +136,14 @@ LZMA_RAMDISK_TARGETS := recovery
 # Device manifest
 DEVICE_MANIFEST_FILE := device/moto/shamu/manifest.xml
 
+# Dexpreopt
+ifeq ($(HOST_OS),linux)
+  ifneq ($(TARGET_BUILD_VARIANT),eng)
+    ifeq ($(WITH_DEXPREOPT),)
+      WITH_DEXPREOPT := true
+      WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
+    endif
+  endif
+endif
+
 -include vendor/motorola/shamu/BoardConfigVendor.mk
