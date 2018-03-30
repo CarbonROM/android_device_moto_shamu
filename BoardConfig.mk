@@ -144,5 +144,18 @@ BOARD_HAS_NO_REAL_SDCARD := true
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
 TW_SCREEN_BLANK_ON_BOOT := true
+TW_DEVICE_VERSION := M5
+TW_CRYPTO_USE_KEYMASTER_V1 := false
+TW_CRYPTO_USE_SYSTEM_VOLD := \
+    qseecomd \
+    keymaster-3-0 \
+    hwservicemanager
+TW_INCLUDE_CRYPTO_FBE := true
+TW_USE_TOOLBOX := true
+TW_EXCLUDE_TWRPAPP := true
+TW_EXCLUDE_SUPERSU := true
+LZMA_RAMDISK_TARGETS := recovery
+
+BOARD_KERNEL_CMDLINE  += androidboot.selinux=permissive
 
 -include vendor/motorola/shamu/BoardConfigVendor.mk
