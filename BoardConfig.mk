@@ -167,4 +167,6 @@ SELINUX_IGNORE_NEVERALLOWS := true
 
 BOARD_ROOT_EXTRA_FOLDERS := persist firmware
 
+TARGET_FLATTEN_APEX := true
+
 -include vendor/motorola/shamu/BoardConfigVendor.mk
