@@ -292,7 +292,6 @@ vendor/lib/libloc_ds_api.so
 
 # IMS/HD Voice
 -app/atfwd/atfwd.apk
--app/ims/ims.apk
 bin/ATFWD-daemon
 bin/imsdatadaemon
 bin/imsqmidaemon
@@ -363,7 +362,7 @@ bin/qmi_motext_hook
 bin/qmuxd
 bin/radish
 bin/tcmd_mini
-etc/ril/qcril.db
+etc/qcril.db:etc/ril/qcril.db
 lib/libdetectmodem.so
 lib/libmdmdetect.so
 vendor/lib/libconfigdb.so

@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2014, The Linux Foundation. All rights reserved.
- * Copyright (C) 2018 The LineageOS Project
+ * Copyright (C) 2018-2019 The LineageOS Project
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -96,8 +96,9 @@ int get_number_of_profiles()
 }
 #endif
 
-static int set_power_profile(int profile)
+static int set_power_profile(void *data)
 {
+    int profile = data ? *((int*)data) : 0;
     int ret = -EINVAL;
     const char *profile_name = NULL;
 
@@ -191,7 +192,34 @@ const int DEFAULT_INTERACTIVE_DURATION   =  200; /* ms */
 const int PERF_INTERACTIVE_DURATION      =  500; /* ms */
 const int MIN_FLING_DURATION             = 1500; /* ms */
 const int MAX_INTERACTIVE_DURATION       = 5000; /* ms */
-const int LAUNCH_DURATION                = 2000; /* ms */
+const int MAX_LAUNCH_DURATION            = 5000; /* ms */
+
+static int process_activity_launch_hint(void *data)
+{
+    static int launch_handle = -1;
+    static int launch_mode = 0;
+
+    // release lock early if launch has finished
+    if (!data) {
+        if (CHECK_HANDLE(launch_handle)) {
+            release_request(launch_handle);
+            launch_handle = -1;
+        }
+        launch_mode = 0;
+        return HINT_HANDLED;
+    }
+
+    if (!launch_mode) {
+        launch_handle = interaction_with_handle(launch_handle, MAX_LAUNCH_DURATION,
+                ARRAY_SIZE(resources_launch), resources_launch);
+        if (!CHECK_HANDLE(launch_handle)) {
+            ALOGE("Failed to perform launch boost");
+            return HINT_NONE;
+        }
+        launch_mode = 1;
+    }
+    return HINT_HANDLED;
+}
 
 int power_hint_override(power_hint_t hint, void *data)
 {
@@ -202,7 +230,7 @@ int power_hint_override(power_hint_t hint, void *data)
     int duration;
 
     if (hint == POWER_HINT_SET_PROFILE) {
-        if (set_power_profile(*(int32_t *)data) < 0)
+        if (set_power_profile(data) < 0)
             ALOGE("mpdecision not started in a timely manner.");
         return HINT_HANDLED;
     }
@@ -257,10 +285,7 @@ int power_hint_override(power_hint_t hint, void *data)
             }
             return HINT_HANDLED;
         case POWER_HINT_LAUNCH:
-            duration = LAUNCH_DURATION;
-            interaction(duration, ARRAY_SIZE(resources_launch),
-                    resources_launch);
-            return HINT_HANDLED;
+            return process_activity_launch_hint(data);
         default:
             break;
     }
