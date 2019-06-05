@@ -2,12 +2,9 @@ LOCAL_PATH:= $(call my-dir)
 
 include $(CLEAR_VARS)
 
-# QCameraParameters.h has unused private field.
 # QCamera3PostProc.cpp has unused label.
 # QCamera3Channel.cpp compares array to null pointer.
 LOCAL_CLANG_CFLAGS += \
-    -Wno-error=unused-private-field \
-    -Wno-error=unused-label \
     -Wno-error=tautological-pointer-compare
 
 LOCAL_SRC_FILES := \
@@ -58,15 +55,14 @@ LOCAL_C_INCLUDES := \
     system/media/camera/include \
     $(LOCAL_PATH)/../mm-image-codec/qexif \
     $(LOCAL_PATH)/../mm-image-codec/qomx_core \
-    $(LOCAL_PATH)/util \
+    $(LOCAL_PATH)/util
 
 #HAL 1.0 Include paths
 LOCAL_C_INCLUDES += \
     frameworks/native/include/media/hardware \
     device/moto/shamu/camera/QCamera2/HAL
 
-LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
-LOCAL_ADDITIONAL_DEPENDENCIES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
+LOCAL_HEADER_LIBRARIES := generated_kernel_headers
 
 #LOCAL_STATIC_LIBRARIES := libqcamera2_util
 LOCAL_C_INCLUDES += \
@@ -94,7 +90,5 @@ LOCAL_MODULE_TAGS := optional
 
 LOCAL_32_BIT_ONLY := true
 include $(BUILD_SHARED_LIBRARY)
-
-include $(LOCAL_PATH)/HAL/test/Android.mk
 
 include $(call first-makefiles-under,$(LOCAL_PATH))
