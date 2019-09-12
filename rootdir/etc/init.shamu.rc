@@ -19,7 +19,6 @@ import init.shamu.usb.rc
 import init.shamu.power.rc
 
 on early-init
-    mkdir /firmware 0771 system system
     symlink /data/tombstones /tombstones
     mount debugfs debugfs /sys/kernel/debug
     chown system system /sys/kernel/debug/kgsl/proc
@@ -31,11 +30,6 @@ on init
     start vndservicemanager
     # vold needs keymaster that needs qseecomd
     start qseecomd
-
-    mkdir /oem 0550 root root
-
-    # Set permissions for persist partition
-    mkdir /persist 0771 system system
 
     symlink /sdcard /storage/sdcard0
 
