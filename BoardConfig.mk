@@ -40,6 +40,8 @@ TARGET_NO_RADIOIMAGE := true
 TARGET_BOOTLOADER_BOARD_NAME := shamu
 TARGET_BOARD_PLATFORM := msm8084
 
+BUILD_BROKEN_DUP_RULES := true
+
 # Camera
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /system/bin/mm-qcamera-daemon=25
@@ -80,7 +82,7 @@ BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_OEMIMAGE_PARTITION_SIZE := 67108864
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16793600
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 18793600
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2147483648
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 25253773312
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -113,6 +115,7 @@ BOARD_KERNEL_CMDLINE += androidboot.hardware=shamu ehci-hcd.park=3
 BOARD_KERNEL_CMDLINE += utags.blkdev=/dev/block/platform/msm_sdcc.1/by-name/utags
 BOARD_KERNEL_CMDLINE += utags.backup=/dev/block/platform/msm_sdcc.1/by-name/utagsBackup
 BOARD_KERNEL_CMDLINE += coherent_pool=8M vmalloc=390M
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 BOARD_KERNEL_PAGESIZE :=  2048
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
@@ -123,7 +126,6 @@ TARGET_KERNEL_CONFIG := shamu_defconfig
 TARGET_KERNEL_SOURCE := kernel/moto/shamu
 
 # Manifests
-DEVICE_FRAMEWORK_MANIFEST_FILE += system/libhidl/vintfdata/manifest_healthd_exclude.xml
 DEVICE_MANIFEST_FILE := device/moto/shamu/manifest.xml
 DEVICE_MATRIX_FILE := device/moto/shamu/compatibility_matrix.xml
 
@@ -160,5 +162,9 @@ WIFI_DRIVER_FW_PATH_AP      := "/vendor/firmware/fw_bcmdhd_apsta.bin"
 WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/bcmdhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA     := "/vendor/firmware/fw_bcmdhd.bin"
 WPA_SUPPLICANT_VERSION      := VER_0_8_X
+
+SELINUX_IGNORE_NEVERALLOWS := true
+
+BOARD_ROOT_EXTRA_FOLDERS := persist firmware
 
 -include vendor/motorola/shamu/BoardConfigVendor.mk
