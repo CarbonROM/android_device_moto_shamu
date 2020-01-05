@@ -1,6 +1,6 @@
 #
 # Copyright (C) 2014 The Android Open-Source Project
-# Copyright (C) 2018 The LineageOS Project
+# Copyright (C) 2018-2019 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,7 +20,8 @@ TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
-TARGET_CPU_VARIANT := krait
+TARGET_CPU_VARIANT := generic
+TARGET_CPU_VARIANT_RUNTIME := krait
 
 # Audio
 BOARD_HAS_AUDIO_DSP := true
@@ -78,13 +79,13 @@ TARGET_KEYMASTER_SKIP_WAITING_FOR_QSEE := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
+BOARD_ROOT_EXTRA_FOLDERS := firmware fsg oem persist
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_OEMIMAGE_PARTITION_SIZE := 67108864
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16793600
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2147483648
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 25253773312
 TARGET_USERIMAGES_USE_EXT4 := true
-TARGET_USERIMAGES_USE_F2FS := true
 TARGET_FS_CONFIG_GEN += device/moto/shamu/config.fs
 
 # Fonts (reduce system image size)
@@ -96,12 +97,7 @@ BOARD_VENDOR_QCOM_LOC_PDK_FEATURE_SET := true
 TARGET_NO_RPC := true
 
 # Gralloc
-TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS := 0x02000000U
-
-# Hardware Composer
-# Maximum dimension (width or height) of a virtual display that will be
-# handled by the hardware composer
-MAX_VIRTUAL_DISPLAY_DIMENSION := 2048
+TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS := 0x2000U | 0x02000000U
 
 # ION
 TARGET_USES_ION := true
@@ -123,9 +119,7 @@ TARGET_KERNEL_CONFIG := shamu_defconfig
 TARGET_KERNEL_SOURCE := kernel/moto/shamu
 
 # Manifests
-DEVICE_FRAMEWORK_MANIFEST_FILE += system/libhidl/vintfdata/manifest_healthd_exclude.xml
 DEVICE_MANIFEST_FILE := device/moto/shamu/manifest.xml
-DEVICE_MATRIX_FILE := device/moto/shamu/compatibility_matrix.xml
 
 # Power
 TARGET_HAS_LEGACY_POWER_STATS := true
@@ -138,16 +132,14 @@ LZMA_RAMDISK_TARGETS := recovery
 TARGET_RECOVERY_FSTAB = device/moto/shamu/rootdir/etc/fstab.shamu
 
 # Render
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
-TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 
 # RIL
 # Support Native Layer RF cutback
 BOARD_USES_CUTBACK_IN_RILD := true
 
 # Selinux
-BOARD_SEPOLICY_DIRS += device/moto/shamu/sepolicy
+BOARD_VENDOR_SEPOLICY_DIRS += device/moto/shamu/sepolicy
 
 # Wi-Fi
 BOARD_WLAN_DEVICE           := bcmdhd

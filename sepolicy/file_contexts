@@ -78,6 +78,12 @@
 /dev/socket/sensor_ctl_socket                         u:object_r:sensors_socket:s0
 
 ###################################
+# firmware files
+#
+/firmware(/.*)?                                       u:object_r:firmware_file:s0
+/fsg(/.*)?                                            u:object_r:fsg_file:s0
+
+###################################
 # persist files
 #
 /persist(/.*)?                                        u:object_r:persist_file:s0
@@ -92,7 +98,6 @@
 # System files
 #
 /system/bin/adspd                                     u:object_r:adspd_exec:s0
-/system/bin/ATFWD-daemon                              u:object_r:atfwd_exec:s0
 /system/bin/cnd                                       u:object_r:cnd_exec:s0
 /system/bin/irsc_util                                 u:object_r:irsc_util_exec:s0
 /system/bin/ks                                        u:object_r:mdm_helper_exec:s0

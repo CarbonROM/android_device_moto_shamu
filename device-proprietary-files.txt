@@ -79,22 +79,6 @@ vendor/lib/libchromatix_ar0261_default_video.so
 vendor/lib/libchromatix_ar0261_liveshot.so
 vendor/lib/libchromatix_ar0261_preview.so
 vendor/lib/libchromatix_ar0261_snapshot.so
-vendor/lib/libchromatix_imx132_common.so
-vendor/lib/libchromatix_imx132_cpp.so
-vendor/lib/libchromatix_imx132_default_video.so
-vendor/lib/libchromatix_imx132_liveshot.so
-vendor/lib/libchromatix_imx132_preview.so
-vendor/lib/libchromatix_imx132_snapshot.so
-vendor/lib/libchromatix_imx135_common.so
-vendor/lib/libchromatix_imx135_cpp.so
-vendor/lib/libchromatix_imx135_default_video.so
-vendor/lib/libchromatix_imx135_hfr_120.so
-vendor/lib/libchromatix_imx135_hfr_60.so
-vendor/lib/libchromatix_imx135_hfr_90.so
-vendor/lib/libchromatix_imx135_liveshot.so
-vendor/lib/libchromatix_imx135_preview.so
-vendor/lib/libchromatix_imx135_snapshot.so
-vendor/lib/libchromatix_imx135_video_hd.so
 vendor/lib/libchromatix_imx214_common.so
 vendor/lib/libchromatix_imx214_cpp.so
 vendor/lib/libchromatix_imx214_cpp_snap.so
@@ -126,8 +110,6 @@ vendor/lib/libmmcamera_ar0261.so
 vendor/lib/libmmcamera_cac2_lib.so
 vendor/lib/libmmcamera_faceproc.so
 vendor/lib/libmmcamera_imglib.so
-vendor/lib/libmmcamera_imx132.so
-vendor/lib/libmmcamera_imx135.so
 vendor/lib/libmmcamera_imx214.so
 vendor/lib/libmmcamera_isp_abf44.so
 vendor/lib/libmmcamera_isp_bcc44.so
@@ -209,8 +191,6 @@ bin/diag_klog
 bin/diag_mdlog
 etc/diag/mdm/FIT_V16_1.cfg
 etc/diag/mdm/FIT_V16_3_audio.cfg
-etc/diag/mdm/sensors_qxdm.cfg
-etc/diag/sensors_qxdm.cfg
 
 # DM/Sprint
 -app/DMConfigUpdate/DMConfigUpdate.apk
@@ -230,17 +210,14 @@ lib/libdmjavaplugin.so
 
 # DRM
 bin/qseecomd
-vendor/lib/drm/libdrmwvmplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so|66ba66d047044f92eb0eada1faf6a5799ded90ab
 vendor/lib/libQSEEComAPI.so
-vendor/lib/libdrmdecrypt.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/liboemcrypto.so
 vendor/lib/librpmb.so
 vendor/lib/libssd.so
 vendor/lib/libwvdrm_L1.so
-vendor/lib/libwvm.so
 vendor/lib/libWVStreamControlAPI_L1.so
 
 # DRM firmware
@@ -261,7 +238,6 @@ vendor/lib/egl/libq3dtools_esx.so
 vendor/lib/libadreno_utils.so
 vendor/lib/libbccQTI.so
 vendor/lib/libC2D2.so
-vendor/lib/libc2d30-a3xx.so
 vendor/lib/libc2d30-a4xx.so
 vendor/lib/libc2d30.so
 vendor/lib/libCB.so
@@ -373,23 +349,6 @@ vendor/firmware/venus.b02
 vendor/firmware/venus.b03
 vendor/firmware/venus.b04
 vendor/firmware/venus.mdt
-
-# Video processing firmware
-etc/firmware/vpu.b00
-etc/firmware/vpu.b01
-etc/firmware/vpu.b02
-etc/firmware/vpu.b03
-etc/firmware/vpu.b04
-etc/firmware/vpu.b05
-etc/firmware/vpu.b06
-etc/firmware/vpu.b07
-etc/firmware/vpu.b08
-etc/firmware/vpu.b09
-etc/firmware/vpu.b10
-etc/firmware/vpu.b11
-etc/firmware/vpu.b12
-etc/firmware/vpu.mbn
-etc/firmware/vpu.mdt
 
 # Voice recognition firmware
 vendor/firmware/aonvr1.bin
