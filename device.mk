@@ -19,16 +19,11 @@
 # are also specific to shamu devices
 #
 
-
 # AAPT
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := 560dpi
 # A list of dpis to select prebuilt apk, in precedence order.
 PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
-
-# APEX
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/ld.config.txt:$(TARGET_COPY_OUT_SYSTEM)/etc/swcodec/ld.config.txt
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -69,8 +64,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/bluetooth/BCM4356A2_001.003.015.0077.0214_ORC.hcd:$(TARGET_COPY_OUT_VENDOR)/firmware/bcm4354A2.hcd
 
 # Camera
-PRODUCT_PACKAGES += \
-    Snap
+# PRODUCT_PACKAGES += \
+#    Snap
 
 PRODUCT_PACKAGES += \
     camera.msm8084 \
@@ -214,10 +209,6 @@ PRODUCT_PACKAGES += \
     librmnetctl \
     libxml2 \
     qmi_motext_hook
-
-# RRO
-PRODUCT_ENFORCE_RRO_TARGETS := *
-PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += $(LOCAL_PATH)/overlay/lineage-sdk
 
 # SEC config
 PRODUCT_COPY_FILES += \
