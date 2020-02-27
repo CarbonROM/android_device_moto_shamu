@@ -44,7 +44,6 @@ TARGET_BOARD_PLATFORM := msm8084
 # Camera
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /system/bin/mm-qcamera-daemon=25
-USE_DEVICE_SPECIFIC_CAMERA:= true
 
 # Charger
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
@@ -71,9 +70,6 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 # Maximum size of the  GLES Shaders that can be cached for reuse.
 # Increase the size if shaders of size greater than 12KB are used.
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
-
-# Encryption
-TARGET_KEYMASTER_SKIP_WAITING_FOR_QSEE := true
 
 # Filesystem
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
