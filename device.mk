@@ -64,8 +64,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/bluetooth/BCM4356A2_001.003.015.0077.0214_ORC.hcd:$(TARGET_COPY_OUT_VENDOR)/firmware/bcm4354A2.hcd
 
 # Camera
-# PRODUCT_PACKAGES += \
-#    Snap
+PRODUCT_PACKAGES += \
+    Snap
 
 PRODUCT_PACKAGES += \
     camera.msm8084 \
@@ -137,6 +137,10 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml
 
+# Offmode charging
+PRODUCT_PACKAGES += \
+    charger_res_images
+
 # OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
@@ -199,6 +203,10 @@ PRODUCT_COPY_FILES += \
 # Recorder
 PRODUCT_PACKAGES += \
     Recorder
+
+# Recovery
+PRODUCT_PACKAGES += \
+    fastbootd
 
 # RIL
 PRODUCT_PACKAGES += \

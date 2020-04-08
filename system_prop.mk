@@ -14,7 +14,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.voicecomm=false \
     persist.audio.fluence.voicerec=false \
     ro.audio.flinger_standbytime_ms=300 \
-    ro.audio.monitorRotation=true \
     ro.config.media_vol_steps=25 \
     ro.config.vc_call_vol_steps=7 \
     ro.qc.sdk.audio.fluencetype=fluence
@@ -72,6 +71,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Factory reset protection
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.frp.pst=/dev/block/platform/msm_sdcc.1/by-name/frp
+
+# Fastbootd
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.fastbootd.available=true
 
 # FIFO
 PRODUCT_PROPERTY_OVERRIDES += \
