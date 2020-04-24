@@ -136,6 +136,7 @@ BOARD_USES_CUTBACK_IN_RILD := true
 # Selinux
 BOARD_VENDOR_SEPOLICY_DIRS += device/moto/shamu/sepolicy
 SELINUX_IGNORE_NEVERALLOWS := true
+SELINUX_IGNORE_NEVERALLOWS_ON_USER := true
 
 # Wi-Fi
 BOARD_WLAN_DEVICE           := bcmdhd
