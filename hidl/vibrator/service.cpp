@@ -13,11 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#define LOG_TAG "android.hardware.vibrator@1.0-service.shamu"
+#define LOG_TAG "android.hardware.vibrator@1.1-service.shamu"
 
-#include <android/hardware/vibrator/1.0/IVibrator.h>
+#include <android/hardware/vibrator/1.1/IVibrator.h>
 #include <hidl/HidlSupport.h>
 #include <hidl/HidlTransportSupport.h>
+#include <hwbinder/ProcessState.h>
 #include <utils/Errors.h>
 #include <utils/StrongPointer.h>
 
@@ -25,8 +26,8 @@
 
 using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
-using android::hardware::vibrator::V1_0::IVibrator;
-using android::hardware::vibrator::V1_0::implementation::Vibrator;
+using android::hardware::vibrator::V1_1::IVibrator;
+using android::hardware::vibrator::V1_1::implementation::Vibrator;
 using namespace android;
 
 static const char *ENABLE_PATH = "/sys/class/timed_output/vibrator/enable";
@@ -53,6 +54,7 @@ status_t registerVibratorService() {
 }
 
 int main() {
+    android::hardware::ProcessState::initWithMmapSize((size_t)8192);
     configureRpcThreadpool(1, true);
     status_t status = registerVibratorService();
 

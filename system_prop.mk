@@ -52,6 +52,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.hwui.use_buffer_age=false \
     debug.sf.enable_gl_backpressure=1 \
+    debug.sf.latch_unsignaled=1 \
     persist.hwc.mdpcomp.enable=true \
     ro.opengles.version=196610 \
     ro.sf.lcd_density=560 \
@@ -103,6 +104,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
 
 # Surfaceflinger
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.surface_flinger.force_hwc_copy_for_virtual_displays=true \
     ro.surface_flinger.max_frame_buffer_acquired_buffers=3 \
     ro.surface_flinger.max_virtual_display_dimension=2048
