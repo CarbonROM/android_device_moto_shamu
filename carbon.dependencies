@@ -1,6 +1,14 @@
 [
   {
-    "repository": "CarbonROM/android_kernel_moto_msm",
-    "target_path": "kernel/moto/shamu"
+    "remote": "lineage",
+    "repository": "LineageOS/android_hardware_sony_timekeep",
+    "target_path": "hardware/sony/timekeep",
+    "revision": "lineage-18.1"
+  },
+  {
+    "remote": "lineage",
+    "repository": "LineageOS/android_kernel_moto_shamu",
+    "target_path": "kernel/moto/shamu",
+    "revision": "lineage-18.1"
   }
 ]
