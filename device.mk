@@ -78,6 +78,10 @@ PRODUCT_PACKAGES += \
 # Characteristics
 PRODUCT_CHARACTERISTICS := nosdcard
 
+# Data (CAF)
+PRODUCT_SOONG_NAMESPACES += \
+    vendor/qcom/opensource/dataservices
+
 # Dex-pre-opt exclusions
 $(call add-product-dex-preopt-module-config,MotoSignatureApp,disable)
 
@@ -105,16 +109,13 @@ PRODUCT_COPY_FILES += \
 
 # HIDL
 $(call inherit-product, $(LOCAL_PATH)/hidl.mk)
+PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/gpio-keys.kl \
     $(LOCAL_PATH)/keylayout/apq8084-taiko-tfa9890_stereo_co_Button_Jack.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/apq8084-taiko-tfa9890_stereo_co_Button_Jack.kl \
     $(LOCAL_PATH)/configs/atmel_mxt_ts.idc:$(TARGET_COPY_OUT_SYSTEM)/usr/idc/atmel_mxt_ts.idc
-
-# Keystore
-PRODUCT_PACKAGES += \
-    keystore.msm8084
 
 # NFC
 PRODUCT_PACKAGES += \
@@ -222,6 +223,10 @@ PRODUCT_PACKAGES += \
 # SEC config
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
+
+# Shims
+PRODUCT_PACKAGES += \
+    libcutils_shim
 
 # Shippig API
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_l.mk)

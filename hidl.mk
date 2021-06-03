@@ -32,8 +32,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.0-service \
-    android.hardware.drm@1.2-service.clearkey
-
+    android.hardware.drm@1.3-service.clearkey
 
 # Dumpstate
 PRODUCT_PACKAGES += \
@@ -43,6 +42,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.gnss@1.0-impl.legacy \
     android.hardware.gnss@1.0-service.legacy
+
+# Gatekeeper
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0-service.software
 
 # Graphics
 PRODUCT_PACKAGES += \
@@ -57,6 +60,13 @@ PRODUCT_PACKAGES += \
 # Health
 PRODUCT_PACKAGES += \
    android.hardware.health@2.0-service.shamu
+
+# HIDL
+PRODUCT_PACKAGES += \
+    libhidltransport \
+    libhidltransport.vendor \
+    libhwbinder \
+    libhwbinder.vendor
 
 # Keymaster
 PRODUCT_PACKAGES += \
@@ -83,7 +93,7 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.2-service.shamu
+    android.hardware.power-service.shamu
 
 # RenderScript
 PRODUCT_PACKAGES += \

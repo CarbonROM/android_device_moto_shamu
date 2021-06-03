@@ -47,19 +47,9 @@ TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
 
 # Charger
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
-BOARD_CHARGER_ENABLE_SUSPEND := true
 
 # Dexpreopt
-# Enable dex-preoptimization to speed up first boot sequence
-ifeq ($(HOST_OS),linux)
-  ifneq ($(TARGET_BUILD_VARIANT),eng)
-    ifeq ($(WITH_DEXPREOPT),)
-      DONT_DEXPREOPT_PREBUILTS := true
-      WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := false
-      WITH_DEXPREOPT := true
-    endif
-  endif
-endif
+DONT_DEXPREOPT_PREBUILTS := true
 WITH_DEXPREOPT_DEBUG_INFO := false
 
 # EGL
@@ -115,16 +105,19 @@ TARGET_KERNEL_SOURCE := kernel/moto/shamu
 # Manifests
 DEVICE_MANIFEST_FILE := device/moto/shamu/manifest.xml
 
+# Memfd
+TARGET_HAS_MEMFD_BACKPORT := true
+
+# Netmgrd
+TARGET_USES_PRE_UPLINK_FEATURES_NETMGRD := true
+
 # Power
 TARGET_USES_INTERACTION_BOOST := true
 TARGET_TAP_TO_WAKE_NODE := "/sys/bus/i2c/devices/1-004a/tsp"
 
 # Recovery
-LZMA_RAMDISK_TARGETS := recovery
+BOARD_RAMDISK_USE_XZ := true
 TARGET_RECOVERY_FSTAB = device/moto/shamu/rootdir/etc/fstab.shamu
-
-# Render
-OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 
 # RIL
 # Support Native Layer RF cutback
@@ -134,6 +127,10 @@ BOARD_USES_CUTBACK_IN_RILD := true
 BOARD_VENDOR_SEPOLICY_DIRS += device/moto/shamu/sepolicy
 SELINUX_IGNORE_NEVERALLOWS := true
 SELINUX_IGNORE_NEVERALLOWS_ON_USER := true
+
+# Shims
+TARGET_LD_SHIM_LIBS := \
+    /system/vendor/lib/libcne.so|libcutils_shim.so
 
 # Wi-Fi
 BOARD_WLAN_DEVICE           := bcmdhd
@@ -145,6 +142,7 @@ WIFI_BUS := PCIE
 WIFI_DRIVER_FW_PATH_AP      := "/vendor/firmware/fw_bcmdhd_apsta.bin"
 WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/bcmdhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA     := "/vendor/firmware/fw_bcmdhd.bin"
+WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 WPA_SUPPLICANT_VERSION      := VER_0_8_X
 
 -include vendor/motorola/shamu/BoardConfigVendor.mk
