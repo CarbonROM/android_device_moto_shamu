@@ -52,9 +52,7 @@ PRODUCT_COPY_FILES += \
 # Audio Effects
 PRODUCT_PACKAGES += \
     libqcompostprocbundle \
-    libqcomvisualizer \
-    libqcomvoiceprocessing \
-    libqcomvoiceprocessingdescriptors
+    libqcomvisualizer
 
 # Bluetooth
 PRODUCT_PACKAGES += \
@@ -259,6 +257,10 @@ ifeq ($(TARGET_BUILD_VARIANT),user)
 PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/msm_sdcc.1/by-name/system
 $(call inherit-product, build/target/product/verity.mk)
 endif
+
+# VNDK
+PRODUCT_COPY_FILES += \
+    prebuilts/vndk/v29/arm/arch-arm-armv7-a-neon/shared/vndk-core/libprotobuf-cpp-lite.so:$(TARGET_COPY_OUT_VENDOR)/lib/libprotobuf-cpp-lite-v29.so
 
 # Wi-Fi
 PRODUCT_PACKAGES += \
